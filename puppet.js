@@ -1,9 +1,7 @@
 var myGamePiece;
-var xPos=20;
-var yPos=100;
 
 function startGame() {
-    myGamePiece = new component(120, 120, "images/pikachu.png", xPos, yPos, "image");
+    myGamePiece = new component(120, 120, "images/pikachu.png", 20, 100, "image");
     myGameArea.start();
 
 }
@@ -34,8 +32,8 @@ function component(width, height, color, x, y, type) {
     this.height = height;
     this.speedX = 0;
     this.speedY = 0;
-    this.x=xPos;
-    this.y=yPos;
+    this.x = x;
+    this.y = y;
     this.update = function () {
         ctx = myGameArea.context;
         if (type == "image") {
@@ -63,28 +61,32 @@ function updateGameArea() {
     myGamePiece.update();
 }
 
-//Direkt mouseun konumunu x ve y'ye atadığı için aşağıdaki fonksiyonlar hatalı çalışıyor.Düzeltilecek.
 //kuklayı sürükleyerek konumlandırmak için
 window.addEventListener('mousedown', function (e) {
-    myGamePiece.x = e.x;
-    myGamePiece.y = e.y;
+    
+    if(e.x<500 && e.y<400)
+    {
+        myGamePiece.x = e.x;
+        myGamePiece.y = e.y;
+
+        return
+    }
 });
 
-
 function moveup() {
-    myGamePiece.speedY = -10;
+    myGamePiece.speedY = -5;
 }
 
 function movedown() {
-    myGamePiece.speedY = 10;
+    myGamePiece.speedY = 5;
 }
 
 function moveleft() {
-    myGamePiece.speedX = -10;
+    myGamePiece.speedX = -5;
 }
 
 function moveright() {
-    myGamePiece.speedX = 10;
+    myGamePiece.speedX = 5;
 }
 
 function clearmove() {
