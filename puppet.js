@@ -64,7 +64,7 @@ function updateGameArea() {
 //kuklayı sürükleyerek konumlandırmak için
 window.addEventListener('mousedown', function (e) {
     
-    if(e.x<500 && e.y<400)
+    if(e.x<myGameArea.canvas.width && e.y<myGameArea.canvas.height)
     {
         myGamePiece.x = e.x;
         myGamePiece.y = e.y;
