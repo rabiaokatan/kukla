@@ -1,20 +1,114 @@
+<!DOCTYPE html>
 <html>
+
+<head>
+    <meta charset="utf-8">
+    <title>HefaBot</title>
+    <script src="./blockly_compressed.js"></script>
+    <script src="./blocks_compressed.js"></script>
+    <script src="./javascript_compressed.js"></script>
+    <script src="./msg/js/en.js"></script>
+    <style>
+        p.ex1{
+            margin-top: 20px;
+        }
+        body {
+            background-color: #fff;
+            font-family: sans-serif;
+        }
+
+        h1 {
+            font-weight: normal;
+            font-size: 140%;
+        }
+    </style>
+</head>
 
 <body onload="startGame()">
 
 
-    <canvas id='canvas' style="border: 1px solid black;  background-color: #f1f1f1" width="500" , height="400"></canvas>
+    <canvas id='canvas' style="border: 1px solid rgb(109, 105, 105); background-color: #f1f1f1; float: left;"
+        width="600" , height="500"></canvas>
+
+<p>
+    <button onclick="showCode()" style="float: right;">Show JavaScript</button>
+    <button onclick="runCode()" style="float: right;">Run JavaScript</button>
+</p>
+
+
+    <div id="blocklyDiv" style="height: 480px; width: 700px; float:right"></div>
+
+    <xml xmlns="https://developers.google.com/blockly/xml" id="toolbox" style="display: none">
+        <category name="Logic" colour="%{BKY_LOGIC_HUE}">
+            <block type="controls_if"></block>
+            <block type="logic_compare"></block>
+            <block type="logic_operation"></block>
+            <block type="logic_negate"></block>
+            <block type="logic_boolean"></block>
+        </category>
+        <category name="Loops" colour="%{BKY_LOOPS_HUE}">
+            <block type="controls_repeat_ext">
+                <value name="TIMES">
+                    <block type="math_number">
+                        <field name="NUM">10</field>
+                    </block>
+                </value>
+            </block>
+            <block type="controls_whileUntil"></block>
+        </category>
+        <category name="Math" colour="%{BKY_MATH_HUE}">
+            <block type="math_number">
+                <field name="NUM">123</field>
+            </block>
+            <block type="math_arithmetic"></block>
+            <block type="math_single"></block>
+        </category>
+        <category name="Text" colour="%{BKY_TEXTS_HUE}">
+            <block type="text"></block>
+            <block type="text_length"></block>
+            <block type="text_print"></block>
+        </category>
+    </xml>
 
     <script src="puppet.js"></script>
-    <p></p>
-
-    <div style="text-align:center;width:480px;">
+   
+    <div style="text-align:center;width:500px;">
         <button onmousedown="moveup()" onmouseup="clearmove()" ontouchstart="moveup()">UP</button><br><br>
         <button onmousedown="moveleft()" onmouseup="clearmove()" ontouchstart="moveleft()">LEFT</button>
         <button onmousedown="moveright()" onmouseup="clearmove()" ontouchstart="moveright()">RIGHT</button><br><br>
         <button onmousedown="movedown()" onmouseup="clearmove()" ontouchstart="movedown()">DOWN</button>
     </div>
 
+    <script>
+        var demoWorkspace = Blockly.inject('blocklyDiv',
+            {
+                media: './media/',
+                toolbox: document.getElementById('toolbox')
+            });
+        Blockly.Xml.domToWorkspace(document.getElementById('startBlocks'),
+            demoWorkspace);
+
+        function showCode() {
+            // Generate JavaScript code and display it.
+            Blockly.JavaScript.INFINITE_LOOP_TRAP = null;
+            var code = Blockly.JavaScript.workspaceToCode(demoWorkspace);
+            alert(code);
+        }
+
+        function runCode() {
+            // Generate JavaScript code and run it.
+            window.LoopTrap = 1000;
+            Blockly.JavaScript.INFINITE_LOOP_TRAP =
+                'if (--window.LoopTrap == 0) throw "Infinite loop.";\n';
+            var code = Blockly.JavaScript.workspaceToCode(demoWorkspace);
+            Blockly.JavaScript.INFINITE_LOOP_TRAP = null;
+            try {
+                eval(code);
+            } catch (e) {
+                alert(e);
+            }
+        }
+    </script>
 
 </body>
 
