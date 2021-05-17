@@ -1,7 +1,3 @@
-//sadece ilk oluşturduğum gözüküyor???
-
-'use strict';
-
 Blockly.Blocks['move'] = {
     init: function () {
         this.appendValueInput("move")
