@@ -35,8 +35,8 @@
         width="600" , height="500"></canvas>
 
     <p>
-        <button onclick="showCode()" style="float: right;"><img src="images/stop.png" width="15" height="15"></button>
-        <button onclick="runCode()" style="float: right;"><img src="images/flag.png" width="15" height="15"></button>
+        <button onclick="startGame()" style="float: right;"><img src="images/stop.png" width="15" height="15"></button>
+        <button onmousedown="runCode()" onmouseup="clearmove()" ontouchstart="runCode()" style="float: right;"><img src="images/flag.png" width="15" height="15"></button>
     </p>
 
 
@@ -45,8 +45,9 @@
     <xml id="toolbox" style="display: none">
         <category name="Motion" colour=#4DC5C1>
             <block type="move"></block>
+            <block type="go_to"></block>
         </category>
-        <category name="Events" colour=#D1E61C>
+        <category name="Events" colour=#D1E61C> //colour="%{BKY_LOOPS_HUE}"
             <block type="when_flag_clicked"></block>
             <block type="controls_repeat_ext">
                 <value name="TIMES">
@@ -63,16 +64,6 @@
             <block type="logic_operation"></block>
             <block type="logic_negate"></block>
             <block type="logic_boolean"></block>
-        </category>
-        <category name="Loops" colour="%{BKY_LOOPS_HUE}">
-            <block type="controls_repeat_ext">
-                <value name="TIMES">
-                    <block type="math_number">
-                        <field name="NUM">10</field>
-                    </block>
-                </value>
-            </block>
-            <block type="controls_whileUntil"></block>
         </category>
         <category name="Math" colour="%{BKY_MATH_HUE}">
             <block type="math_number">

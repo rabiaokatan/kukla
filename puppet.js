@@ -1,5 +1,5 @@
 var myGamePiece;
-
+var step=0;
 function startGame() {
     myGamePiece = new component(120, 120, "images/pikachu.png", 20, 100, "image");
     myGameArea.start();
@@ -73,20 +73,20 @@ window.addEventListener('mousedown', function (e) {
     }
 });
 
-function moveup() {
-    myGamePiece.speedY = -5;
+function move_up(step) {
+    myGamePiece.speedY = -1*step;
 }
 
-function movedown() {
-    myGamePiece.speedY = 5;
+function move_down(step) {
+    myGamePiece.speedY = 1*step;
 }
 
-function moveleft() {
-    myGamePiece.speedX = -5;
+function move_left(step) {
+    myGamePiece.speedX = -1*step;
 }
 
-function moveright() {
-    myGamePiece.speedX = 5;
+function move_right(step) {
+    myGamePiece.speedX = step*1;
 }
 
 function clearmove() {
