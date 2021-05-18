@@ -57,7 +57,7 @@ Blockly.Blocks['when_flag_clicked'] = {
     init: function () {
         this.appendDummyInput()
             .appendField("when")
-            .appendField(new Blockly.FieldImage("https://scratch.mit.edu/static/assets/2e0c4790f8f9cf28e3c346b9cef0fcb6.svg", 15, 15, { alt: "*", flipRtl: "FALSE" }))
+            .appendField(new Blockly.FieldImage("images/flag.png", 15, 15, { alt: "*", flipRtl: "FALSE" }))
             .appendField("clicked");
         this.setInputsInline(false);
         this.setNextStatement(true, null);

@@ -1,9 +1,11 @@
 var myGamePiece;
-var step=0;
-function startGame() {
-    myGamePiece = new component(120, 120, "images/pikachu.png", 20, 100, "image");
-    myGameArea.start();
+var step = 0;
+var imgObj = new Image();
 
+
+function startGame() {
+    myGamePiece = new component(120, 120, "images/pikachu.png", 20, 120, "image");
+    myGameArea.start();
 }
 
 var myGameArea = {
@@ -34,8 +36,16 @@ function component(width, height, color, x, y, type) {
     this.speedY = 0;
     this.x = x;
     this.y = y;
-    this.update = function () {
+    this.update = function (img_path) {
+       
         ctx = myGameArea.context;
+
+        //arka plan resmi icin ancak guncellenmiyor
+        if (img_path === undefined) img_path = 'images/backdrop/mat-01.PNG';
+        ctx.drawImage(imgObj, 0, 0);
+        imgObj.src = img_path;
+        //
+
         if (type == "image") {
 
             ctx.drawImage(this.image,
@@ -55,17 +65,16 @@ function component(width, height, color, x, y, type) {
 
 }
 
-function updateGameArea() {
+function updateGameArea(img_path) {
     myGameArea.clear();
     myGamePiece.newPos();
-    myGamePiece.update();
+    myGamePiece.update(img_path);
 }
 
-//kuklayı sürükleyerek konumlandırmak için
+//kuklayi surukleyerek konumlandirmak icin
 window.addEventListener('mousedown', function (e) {
-    
-    if(e.x<myGameArea.canvas.width && e.y<myGameArea.canvas.height)
-    {
+
+    if (e.x < myGameArea.canvas.width && e.y < myGameArea.canvas.height) {
         myGamePiece.x = e.x;
         myGamePiece.y = e.y;
 
@@ -74,19 +83,19 @@ window.addEventListener('mousedown', function (e) {
 });
 
 function move_up(step) {
-    myGamePiece.speedY = -1*step;
+    myGamePiece.speedY = -1 * step;
 }
 
 function move_down(step) {
-    myGamePiece.speedY = 1*step;
+    myGamePiece.speedY = 1 * step;
 }
 
 function move_left(step) {
-    myGamePiece.speedX = -1*step;
+    myGamePiece.speedX = -1.75 * step;
 }
 
 function move_right(step) {
-    myGamePiece.speedX = step*1;
+    myGamePiece.speedX = step * 1.75;
 }
 
 function clearmove() {
