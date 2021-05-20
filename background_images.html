@@ -21,7 +21,6 @@
             box-sizing: border-box;
             margin-bottom: 2px;
             margin-top: 2px;
-            /* padding: 10px;*/
         }
 
         .responsive {
@@ -58,11 +57,16 @@
         desc[0] = new Array("bedroom", "bedroom game....");
         desc[1] = new Array("castle", "castle game ...");
         desc[2] = new Array("colorfulcity", "colorful city game ...");
+        desc[3] = new Array("farm", "farm game....");
+        desc[4] = new Array("forest", "forest game ...");
+        desc[5] = new Array("jurassic", "jurassic game ...");
+        desc[6] = new Array("underwater", "underwater game ...");
+        desc[7] = new Array("mat-01", "space game ...");
 
         function myfunction(id) {
             //Get image src on click on the respective divs
             var imgSrc = "images/backdrop/" + id + ".png";
-            console.log(imgSrc);
+            //console.log(imgSrc);
             //calismiyor updateGameArea(imgSrc);
 
             //oyun acıklaması icin
@@ -70,10 +74,8 @@
                 for (j = 0; j < 2; j++) {
 
                     if (desc[i][j] == id) alert(desc[i][1]);
-
                 }
             }
-
         }
     </script>
     <title>Games</title>
@@ -86,7 +88,7 @@
     <div class="responsive">
         <div class="gallery" onclick="myfunction('bedroom');">
             <a href="index.html">
-            <img src="images/backdrop/bedroom.png" alt="Bedroom" width="600" height="400">
+                <img src="images/backdrop/bedroom.png" alt="Bedroom" width="600" height="400">
             </a>
         </div>
     </div>
@@ -94,7 +96,7 @@
     <div class="responsive">
         <div class="gallery" onclick="myfunction('castle');">
             <a href="index.html">
-            <img src="images/backdrop/castle.png" alt="Castle" width="600" height="400">
+                <img src="images/backdrop/castle.png" alt="Castle" width="600" height="400">
             </a>
         </div>
     </div>
@@ -102,45 +104,45 @@
     <div class="responsive">
         <div class="gallery" onclick="myfunction('colorfulcity');">
             <a href="index.html">
-            <img src="images/backdrop/colorfulcity.png" alt="Colorful City" width="600" height="400">
+                <img src="images/backdrop/colorfulcity.png" alt="Colorful City" width="600" height="400">
             </a>
         </div>
     </div>
 
     <div class="responsive">
         <div class="gallery">
-            <a href="index.html">
-            <img src="images/backdrop/farm.png" alt="Farm" width="600" height="400">
-           </a>
-        </div>
-    </div>
-
-    <div class="responsive">
-        <div class="gallery">
-            <a href="index.html">
-            <img src="images/backdrop/forest.png" alt="Forest" width="600" height="400">
+            <a href="index.html" onclick="myfunction('farm');">
+                <img src="images/backdrop/farm.png" alt="Farm" width="600" height="400">
             </a>
         </div>
     </div>
 
     <div class="responsive">
         <div class="gallery">
-            <a href="index.html">
-            <img src="images/backdrop/jurassic.png" alt="Jurassic" width="600" height="400">
+            <a href="index.html" onclick="myfunction('forest');">
+                <img src="images/backdrop/forest.png" alt="Forest" width="600" height="400">
+            </a>
+        </div>
+    </div>
+
+    <div class="responsive">
+        <div class="gallery">
+            <a href="index.html" onclick="myfunction('jurassic');">
+                <img src="images/backdrop/jurassic.png" alt="Jurassic" width="600" height="400">
             </a>
         </div>
     </div>
     <div class="responsive">
         <div class="gallery">
-            <a href="index.html">
-            <img src="images/backdrop/underwater.png" alt="Underwater" width="600" height="400">
+            <a href="index.html" onclick="myfunction('underwater');">
+                <img src="images/backdrop/underwater.png" alt="Underwater" width="600" height="400">
             </a>
         </div>
     </div>
     <div class="responsive">
         <div class="gallery">
-            <a href="index.html">
-            <img src="images/backdrop/mat-01.PNG" alt="Space" width="600" height="400">
+            <a href="index.html" onclick="myfunction('mat-01');">
+                <img src="images/backdrop/mat-01.PNG" alt="Space" width="600" height="400">
             </a>
         </div>
     </div>

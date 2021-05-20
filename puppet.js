@@ -44,7 +44,7 @@ function component(width, height, color, x, y, type) {
         if (img_path === undefined) img_path = 'images/backdrop/mat-01.PNG';
         ctx.drawImage(imgObj, 0, 0);
         imgObj.src = img_path;
-        //
+        
 
         if (type == "image") {
 
@@ -69,6 +69,7 @@ function updateGameArea(img_path) {
     myGameArea.clear();
     myGamePiece.newPos();
     myGamePiece.update(img_path);
+
 }
 
 //kuklayi surukleyerek konumlandirmak icin
