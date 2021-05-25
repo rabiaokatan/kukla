@@ -1,0 +1,149 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HefaBot</title>
+
+  <!-- Materialize, Prettify, and Ardublockly CSS -->
+  <link rel="stylesheet" href="materialize/materialize.css" media="screen,projection">
+  <link rel="stylesheet" href="prettify/arduino.css">
+  <link rel="stylesheet" href="ardublockly.css" media="screen,projection">
+
+  <!-- Ardublockly - These three files contain the compress version -->
+  <script src="../blockly/blockly_compressed.js"></script>
+  <script src="../blockly/blocks_compressed.js"></script>
+  <script src="../blockly/javascript_compressed.js"></script>
+  <script src="../blockly/arduino_compressed.js"></script>
+
+  <!-- Default language js files, user selection appended to head on load -->
+  <script src="../blockly/msg/js/en.js"></script>
+  <script src="msg/en.js"></script>
+  
+  <script src="custom_blocks.js"></script>
+  
+    <style>
+        p.ex1 {
+            margin-top: 20px;
+        }
+
+        body {
+            background-color: #fff;
+            font-family: sans-serif;
+        }
+
+        h1 {
+            font-weight: normal;
+            font-size: 140%;
+        }
+    </style>
+</head>
+
+<body onload="startGame()">
+<canvas id='canvas' style="border: 1px solid rgb(109, 105, 105); background-color: #f1f1f1; float: left;"
+        width="730" , height="500">
+    </canvas>
+
+    <p>
+        <button onclick="startGame()" style="float: right;"><img src="images/stop.png" width="15" height="15"></button>
+        <button onmousedown="runCode()" onmouseup="clearmove()" ontouchstart="runCode()" style="float: right;"><img
+                src="images/flag.png" width="15" height="15"></button>
+        <button onclick="window.location.href='background_images.html'" style="float: right;">Games</button>
+    </p>
+
+
+
+    <div id="blocklyDiv" style="height: 480px; width: 500px; float:right"></div>
+
+    <xml id="toolbox" style="display: none">
+        <category name="Motion" colour=#4DC5C1>
+            <block type="move"></block>
+            <block type="go_to"></block>
+        </category>
+        <category name="Events" colour=#D1E61C> //colour="%{BKY_LOOPS_HUE}"
+            <block type="when_flag_clicked"></block>
+            <block type="controls_repeat_ext">
+                <value name="TIMES">
+                    <block type="math_number">
+                        <field name="NUM">20</field>
+                    </block>
+                </value>
+            </block>
+            <block type="controls_whileUntil"></block>
+        </category>
+        <category name="Control" colour=#E98C1D>
+            <block type="controls_if"></block>
+            <block type="logic_compare"></block>
+            <block type="logic_operation"></block>
+            <block type="logic_negate"></block>
+            <block type="logic_boolean"></block>
+        </category>
+        <category name="Math" colour="%{BKY_MATH_HUE}">
+            <block type="math_number">
+                <field name="NUM">10</field>
+            </block>
+            <block type="math_arithmetic"></block>
+            <block type="math_single"></block>
+        </category>
+        <category name="Text" colour="%{BKY_TEXTS_HUE}">
+            <block type="text"></block>
+            <block type="text_length"></block>
+            <block type="text_print"></block>
+        </category>
+    </xml>
+	
+  <!-- Desktop version of Ardublockly JS, needs to be loaded first. -->
+  <script src="ardublockly_desktop.js"></script>
+  <!-- jQuery and Materialize JS -->
+  <script src="js_libs/jquery-2.1.3.min.js"></script>
+  <script src="materialize/materialize.js"></script>
+  <!-- FileSaver JS -->
+  <script src="js_libs/FileSaver.min.js"></script>
+  <!-- JS Diff -->
+  <script src="js_libs/diff.js"></script>
+  <!-- Prettify JS -->
+  <script src="prettify/prettify.js"></script>
+  <!-- Ardublockly app -->
+  <script src="ardublocklyserver_ajax.js"></script>
+  <script src="ardublockly_lang.js"></script>
+  <script src="ardublockly_design.js"></script>
+  <script src="ardublockly_toolbox.js"></script>
+  <script src="ardublockly_blockly.js"></script>
+  <script src="ardublockly.js"></script>
+   <script src="puppet.js"></script>
+
+  <script>
+   var workspace = Blockly.inject('blocklyDiv',
+             {
+                media: './media/',
+                 toolbox: document.getElementById('toolbox')
+            });
+
+   Ardublockly.workspace=workspace;
+	
+   function runCode() {
+            // Generate JavaScript code and run it.
+            window.LoopTrap = 1000;
+            // Blockly.JavaScript.INFINITE_LOOP_TRAP =
+            //  'if (--window.LoopTrap == 0) throw "Infinite loop.";\n';
+        
+            /*
+			//Burası açık olursa kuklayı hareket ettiremiyorz çünkü o bloğu tanımıyor. 
+			//Sadece varsayılan bloklarda sorunsuz çalışıyor ve onlara ait arduino kodunu üretiyor.
+			var arduinoCode = Ardublockly.generateArduino();
+            console.log("arduino code:" + arduinoCode); */
+			
+            var code = Blockly.JavaScript.workspaceToCode(workspace);
+			//console.log("code:"+ code);
+			
+            Blockly.JavaScript.INFINITE_LOOP_TRAP = null;
+            try {
+                eval(code);
+            } catch (e) {
+                alert(e);
+            }
+        }
+    </script>
+
+</body>
+</html>
