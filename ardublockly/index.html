@@ -127,14 +127,11 @@
             // Blockly.JavaScript.INFINITE_LOOP_TRAP =
             //  'if (--window.LoopTrap == 0) throw "Infinite loop.";\n';
         
-            /*
-			//Burası açık olursa kuklayı hareket ettiremiyorz çünkü o bloğu tanımıyor. 
-			//Sadece varsayılan bloklarda sorunsuz çalışıyor ve onlara ait arduino kodunu üretiyor.
-			var arduinoCode = Ardublockly.generateArduino();
-            console.log("arduino code:" + arduinoCode); */
+            
 			
             var code = Blockly.JavaScript.workspaceToCode(workspace);
 			//console.log("code:"+ code);
+			
 			
             Blockly.JavaScript.INFINITE_LOOP_TRAP = null;
             try {
@@ -142,6 +139,10 @@
             } catch (e) {
                 alert(e);
             }
+			
+			//Sadece varsayılan bloklarda sorunsuz çalışıyor ve onlara ait arduino kodunu üretiyor.
+			var arduinoCode = Ardublockly.generateArduino();
+            console.log("arduino code:" + arduinoCode); 
         }
     </script>
 
