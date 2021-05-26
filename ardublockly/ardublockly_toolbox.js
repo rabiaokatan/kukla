@@ -231,4 +231,26 @@ Ardublockly.TOOLBOX_XML =
 '    <block type="spi_transfer"></block>' +
 '    <block type="spi_transfer_return"></block>' +
 '  </category>' +
+'  <sep></sep>' +
+'  <category id="catSensör" name="Sensörler">' +
+'    <block type="motor"></block>' +
+'    <block type="cizgi_izleme"></block>' +
+'    <block type="sicaklik_etkinlestir"></block>' +
+'    <block type="sicaklik_al"></block>' +
+'    <block type="nem_al"></block>' +
+'    <block type="sensor_ultrasonic"></block>' +
+'    <block type="hava_kalite_sensor"></block>' +
+'    <block type="nolu_led_yak4"></block>' +
+'    <block type="buzzer"></block>' +
+'    <block type="isik_sensor"></block>' +
+'  </category>' +
+'  <sep></sep>' +
+'  <sep></sep>' +
+'  <category id="catHareket" name="Hareket">' +
+'    <block type="move"></block>' +
+'    <block type="go_to"></block>' +
+'    <block type="when_flag_clicked"></block>' +
+'  </category>' +
+'  <sep></sep>' +
+
 '</xml>';

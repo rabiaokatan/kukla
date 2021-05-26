@@ -4,7 +4,7 @@ var imgObj = new Image();
 
 
 function startGame() {
-    myGamePiece = new component(120, 120, "images/pikachu.png", 20, 120, "image");
+    myGamePiece = new component(60, 60, "images/pikachu.png", 20, 120, "image");
     myGameArea.start();
 }
 
@@ -42,7 +42,9 @@ function component(width, height, color, x, y, type) {
 
         //arka plan resmi icin ancak guncellenmiyor
         if (img_path === undefined) img_path = 'images/backdrop/mat-01.PNG';
-        ctx.drawImage(imgObj, 0, 0);
+       
+        ctx.drawImage(imgObj, 0, 0, imgObj.width,    imgObj.height,     // source rectangle
+                   0, 0, canvas.width, canvas.height);
         imgObj.src = img_path;
         //console.log(img_path);
 
