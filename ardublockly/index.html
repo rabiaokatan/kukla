@@ -17,8 +17,6 @@
   <script src="../blockly/javascript_compressed.js"></script>
   <script src="../blockly/arduino_compressed.js"></script>
 
-
-
   <script src="../blockly/generators/arduino/sensorler.js"></script>
   <script src="../blockly/blocks/arduino/sensorler.js"></script>
 
@@ -43,9 +41,11 @@
       font-size: 140%;
     }
 
-    .myClass {
-      width: 600px;
-      height: auto;
+    .format-pre pre {
+      background: #ffffff;
+      color: #000000;
+      padding: 5px;
+      font-size: 14px;
     }
   </style>
 </head>
@@ -66,9 +66,6 @@
   <p>
     <button onclick="arduinoSourceCodeAlert()" style="float:right;">Arduino Kaynak Kodu</button>
   </p>
-
-
-
 
   <!-- Horizontal Navigation bar -->
   <nav class="nav-fixed arduino_teal">
@@ -212,10 +209,12 @@
             </div>
           </li>
           <li>
-            <div  id="xml_collapsible_header"></div>
+            <div id="xml_collapsible_header"></div>
             <div class="collapsible-body" style="position:relative" id="xml_collapsible_body">
-              <a class="btn-floating btn-large waves-effect waves-light arduino_teal z-depth-1-half" id="button_load_xml"><i class="mdi-action-extension"></i></a>
-              <textarea id="content_xml" class="content content_height_transition content_xml_large" wrap="soft"></textarea>
+              <a class="btn-floating btn-large waves-effect waves-light arduino_teal z-depth-1-half"
+                id="button_load_xml"><i class="mdi-action-extension"></i></a>
+              <textarea id="content_xml" class="content content_height_transition content_xml_large"
+                wrap="soft"></textarea>
             </div>
           </li>
         </ul>
@@ -403,9 +402,12 @@
     function arduinoSourceCodeAlert() {
       var arduinoCode = Ardublockly.generateArduino();
       Swal.fire({
-        title: arduinoCode,
+        html: '<pre>' + arduinoCode + '</pre>',
+        customClass: {
+          popup: 'format-pre'
+        },
         confirmButtonText: "Tamam",
-        width: 800,
+        width: 500,
       });
     }
 
