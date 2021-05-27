@@ -1,5 +1,6 @@
 <!DOCTYPE HTML>
 <html>
+
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -16,51 +17,64 @@
   <script src="../blockly/javascript_compressed.js"></script>
   <script src="../blockly/arduino_compressed.js"></script>
 
-  
-  
+
+
   <script src="../blockly/generators/arduino/sensorler.js"></script>
   <script src="../blockly/blocks/arduino/sensorler.js"></script>
 
   <!-- Default language js files, user selection appended to head on load -->
   <script src="../blockly/msg/js/tr.js"></script>
   <script src="msg/tr.js"></script>
-  
+
   <script src="custom_blocks.js"></script>
-  
-    <style>
-        p.ex1 {
-            margin-top: 20px;
-        }
 
-        body {
-            background-color: #fff;
-            font-family: sans-serif;
-        }
+  <style>
+    p.ex1 {
+      margin-top: 20px;
+    }
 
-        h1 {
-            font-weight: normal;
-            font-size: 140%;
-        }
-    </style>
+    body {
+      background-color: #fff;
+      font-family: sans-serif;
+    }
+
+    h1 {
+      font-weight: normal;
+      font-size: 140%;
+    }
+
+    .myClass {
+      width: 600px;
+      height: auto;
+    }
+  </style>
 </head>
 
 <body onload="startGame()">
-<canvas id='canvas' style="border: 1px solid rgb(109, 105, 105); background-color: #f1f1f1; float: left;"
-        width="430" , height="300">
-    </canvas>
+  <canvas id='canvas' style="border: 1px solid rgb(109, 105, 105); background-color: #f1f1f1; float: left;" width="430"
+    , height="300">
+  </canvas>
 
-    <p>
-        <button onclick="startGame()" style="float: right;"><img src="images/stop.png" width="15" height="15"></button>
-        <button onmousedown="runCode()" onmouseup="clearmove()" ontouchstart="runCode()" style="float: right;"><img
-                src="images/flag.png"  width="15" height="15"></button>
-        <button onclick="window.location.href='background_images.html'" style="float: right;">Games</button>
-    </p>
+  <p>
+    <button onclick="startGame()" style="float: right;"><img src="images/stop.png" width="15" height="15"></button>
+    <button onmousedown="runCode()" onmouseup="clearmove()" ontouchstart="runCode()" style="float: right;"><img
+        src="images/flag.png" width="15" height="15"></button>
+  </p><br>
+  <p>
+    <button onclick="window.location.href='background_images.html'" style="float: right;">Oyunlar</button>
+  </p><br>
+  <p>
+    <button onclick="arduinoSourceCodeAlert()" style="float:right;">Arduino Kaynak Kodu</button>
+  </p>
+
+
 
 
   <!-- Horizontal Navigation bar -->
   <nav class="nav-fixed arduino_teal">
     <div class="nav-wrapper container">
-      <a class="show-on-large button-collapse" href="#" data-activates="slide-out" id="button-collapse"><i class="mdi-navigation-menu"></i></a>
+      <a class="show-on-large button-collapse" href="#" data-activates="slide-out" id="button-collapse"><i
+          class="mdi-navigation-menu"></i></a>
       <a id="logo-container" class="brand-logo">
         <span class="app_title translatable_title">HefaBot:</span>
         <!-- Sketch name editable text field -->
@@ -71,29 +85,38 @@
       </a>
       <!-- Horizontal Navbar links only shown on large resolutions -->
       <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li><a href="#" id="button_load"><span class="translatable_open">Aç</span><i class="mdi-file-file-upload left"></i></a></li>
-        <li><a href="#" id="button_save"><span class="translatable_save">Kaydet</span><i class="mdi-file-file-download left"></i></a></li>
-        <li><a href="#" id="button_delete"><span class="translatable_deleteAll">Hepsini Sil</span><i class="mdi-action-delete left"></i></a></li>
+        <li><a href="#" id="button_load"><span class="translatable_open">Aç</span><i
+              class="mdi-file-file-upload left"></i></a></li>
+        <li><a href="#" id="button_save"><span class="translatable_save">Kaydet</span><i
+              class="mdi-file-file-download left"></i></a></li>
+        <li><a href="#" id="button_delete"><span class="translatable_deleteAll">Hepsini Sil</span><i
+              class="mdi-action-delete left"></i></a></li>
       </ul>
     </div>
   </nav>
 
   <!-- Sidebar navigation -->
   <ul id="slide-out" class="side-nav">
-  
+
     <li class="no-padding">
       <ul>
-        <li id="menu_load"><a href="#"><span class="translatable_open">Aç</span><i class="mdi-file-file-upload left"></i></a></li>
-        <li id="menu_save"><a href="#"><span class="translatable_save">Kaydet</span><i class="mdi-file-file-download left"></i></a></li>
-        <li id="menu_delete"><a href="#"><span class="translatable_deleteAll">Hepsini Sil</span><i class="mdi-action-delete left"></i></a></li>
-        <li id="menu_settings"><a href="#"><span class="translatable_settings">Ayarlar</span><i class="mdi-action-settings left"></i></a></li>
-        <li id="menu_bug"><a href="https://github.com/carlosperate/ardublockly/wiki" target="_blank"><span class="translatable_documentation">Dökümanlar</span><i class="mdi-action-help left"></i></a></li>
-      
+        <li id="menu_load"><a href="#"><span class="translatable_open">Aç</span><i
+              class="mdi-file-file-upload left"></i></a></li>
+        <li id="menu_save"><a href="#"><span class="translatable_save">Kaydet</span><i
+              class="mdi-file-file-download left"></i></a></li>
+        <li id="menu_delete"><a href="#"><span class="translatable_deleteAll">Hepsini Sil</span><i
+              class="mdi-action-delete left"></i></a></li>
+        <li id="menu_settings"><a href="#"><span class="translatable_settings">Ayarlar</span><i
+              class="mdi-action-settings left"></i></a></li>
+        <li id="menu_bug"><a href="https://github.com/carlosperate/ardublockly/wiki" target="_blank"><span
+              class="translatable_documentation">Dökümanlar</span><i class="mdi-action-help left"></i></a></li>
+
       </ul>
     <li class="no-padding">
       <ul class="collapsible collapsible-accordion">
         <li>
-          <div class="collapsible-header"><span class="translatable_examples">Örnek Projeler</span><i class="mdi-navigation-arrow-drop-down"></i></div>
+          <div class="collapsible-header"><span class="translatable_examples">Örnek Projeler</span><i
+              class="mdi-navigation-arrow-drop-down"></i></div>
           <div class="collapsible-body">
             <ul>
               <li id="menu_example_1"><a href="#!">örnek 1</a></li>
@@ -114,46 +137,61 @@
     <div class="row">
       <div class="col s12 m12 l8" style="position:relative">
         <!-- Toolbox visibility button -->
-        <a id="button_toggle_toolbox" class="waves-effect waves-light btn-flat button_toggle_toolbox_off" style="display: none"><i id="button_toggle_toolbox_icon" class="mdi-action-visibility-off"></i></a>
+        <a id="button_toggle_toolbox" class="waves-effect waves-light btn-flat button_toggle_toolbox_off"
+          style="display: none"><i id="button_toggle_toolbox_icon" class="mdi-action-visibility-off"></i></a>
         <!-- Arduino IDE action buttons -->
         <div id="ide_buttons_wrapper">
-          <a id="button_ide_left" class="waves-effect waves-light waves-circle btn-floating z-depth-1-half arduino_yellow"><i id="button_ide_left_icon" class="mdi-action-open-in-browser"></i></a>
-          <a id="button_ide_middle" class="waves-effect waves-light waves-circle btn-floating z-depth-1-half arduino_teal"><i id="button_ide_middle_icon" class="mdi-navigation-check"></i></a>
-          <a id="button_ide_large" class="waves-effect waves-light waves-circle btn-floating z-depth-1-half arduino_orange"><i id="button_ide_large_icon" class="mdi-av-play-arrow"></i></a>
+          <a id="button_ide_left"
+            class="waves-effect waves-light waves-circle btn-floating z-depth-1-half arduino_yellow"><i
+              id="button_ide_left_icon" class="mdi-action-open-in-browser"></i></a>
+          <a id="button_ide_middle"
+            class="waves-effect waves-light waves-circle btn-floating z-depth-1-half arduino_teal"><i
+              id="button_ide_middle_icon" class="mdi-navigation-check"></i></a>
+          <a id="button_ide_large"
+            class="waves-effect waves-light waves-circle btn-floating z-depth-1-half arduino_orange"><i
+              id="button_ide_large_icon" class="mdi-av-play-arrow"></i></a>
           <div id="button_ide_large_spinner" class="preloader-wrapper active ide_loader" style="display:none">
             <div class="spinner-layer spinner-orange">
               <div class="circle-clipper left">
                 <div class="circle"></div>
-              </div><div class="gap-patch">
+              </div>
+              <div class="gap-patch">
                 <div class="circle"></div>
-              </div><div class="circle-clipper right">
+              </div>
+              <div class="circle-clipper right">
                 <div class="circle"></div>
               </div>
             </div>
             <div class="spinner-layer spinner-dark-teal">
               <div class="circle-clipper left">
                 <div class="circle"></div>
-              </div><div class="gap-patch">
+              </div>
+              <div class="gap-patch">
                 <div class="circle"></div>
-              </div><div class="circle-clipper right">
+              </div>
+              <div class="circle-clipper right">
                 <div class="circle"></div>
               </div>
             </div>
             <div class="spinner-layer spinner-yellow">
               <div class="circle-clipper left">
                 <div class="circle"></div>
-              </div><div class="gap-patch">
+              </div>
+              <div class="gap-patch">
                 <div class="circle"></div>
-              </div><div class="circle-clipper right">
+              </div>
+              <div class="circle-clipper right">
                 <div class="circle"></div>
               </div>
             </div>
             <div class="spinner-layer spinner-light-teal">
               <div class="circle-clipper left">
                 <div class="circle"></div>
-              </div><div class="gap-patch">
+              </div>
+              <div class="gap-patch">
                 <div class="circle"></div>
-              </div><div class="circle-clipper right">
+              </div>
+              <div class="circle-clipper right">
                 <div class="circle"></div>
               </div>
             </div>
@@ -167,21 +205,14 @@
         </div>
       </div>
       <div class="col s12 m12 l4">
-        <ul class="collapsible z-depth-1" data-collapsible="accordion">
+        <ul data-collapsible="accordion">
           <li>
-            <div class="collapsible-header active">
-              <span class="collapsible_logo">{ }</span>
-              <span class="translatable_arduinoSourceCode">Arduino Kaynak Kodu:</span>
-            </div>
             <div class="collapsible-body">
               <pre id="content_arduino" class="content content_height_transition content_arduino_large"></pre>
             </div>
           </li>
           <li>
-            <div class="collapsible-header" id="xml_collapsible_header">
-              <span class="collapsible_logo">&#60; &#62;</span>
-              <span class="translatable_blocksXml">Block XML</span>
-            </div>
+            <div  id="xml_collapsible_header"></div>
             <div class="collapsible-body" style="position:relative" id="xml_collapsible_body">
               <a class="btn-floating btn-large waves-effect waves-light arduino_teal z-depth-1-half" id="button_load_xml"><i class="mdi-action-extension"></i></a>
               <textarea id="content_xml" class="content content_height_transition content_xml_large" wrap="soft"></textarea>
@@ -265,11 +296,13 @@
   <div id="gen_alert" class="modal modal_small modal-fixed-footer">
     <div class="modal-content">
       <h5 id="gen_alert_title">Empty Alert</h4>
-      <p><span id="gen_alert_body">Empty alert text</span></p>
+        <p><span id="gen_alert_body">Empty alert text</span></p>
     </div>
     <div class="modal-footer">
-      <a id="gen_alert_ok_link" href="#" class="waves-effect btn-flat modal-close"><span class="translatable_okay">Okay</span></a>
-      <a id="gen_alert_cancel_link" href="#" class="waves-effect btn-flat modal-close"><span class="translatable_cancel">Cancel</span></a>
+      <a id="gen_alert_ok_link" href="#" class="waves-effect btn-flat modal-close"><span
+          class="translatable_okay">Okay</span></a>
+      <a id="gen_alert_cancel_link" href="#" class="waves-effect btn-flat modal-close"><span
+          class="translatable_cancel">Cancel</span></a>
     </div>
   </div>
 
@@ -280,8 +313,10 @@
       <p><input id="gen_prompt_input" value="test" /></p>
     </div>
     <div class="modal-footer">
-      <a id="gen_prompt_ok_link" href="#" class="waves-effect btn-flat modal-close"><span class="translatable_okay">Okay</span></a>
-      <a id="gen_prompt_cancel_link" href="#" class="waves-effect btn-flat modal-close"><span class="translatable_cancel">Cancel</span></a>
+      <a id="gen_prompt_ok_link" href="#" class="waves-effect btn-flat modal-close"><span
+          class="translatable_okay">Okay</span></a>
+      <a id="gen_prompt_cancel_link" href="#" class="waves-effect btn-flat modal-close"><span
+          class="translatable_cancel">Cancel</span></a>
     </div>
   </div>
 
@@ -289,17 +324,22 @@
   <div id="not_running_dialog" class="modal">
     <div class="modal-content">
       <div>
-        <h4 id="gen_alert_title"><span class="translatable_noServerTitle">Ardublockly Uygulaması Ardunio.exeye bağlı değil</span></h4>
+        <h4 id="gen_alert_title"><span class="translatable_noServerTitle">Ardublockly Uygulaması Ardunio.exeye bağlı
+            değil</span></h4>
       </div>
       <div class="translatable_noServerBody">
-        <p>For all the Ardublockly features to be enabled, the Ardublockly desktop application must be running locally on your computer.</p>
-        <p>If you are using an online version you will not be able to configure the settings nor load the blocks code into an Arduino.</p>
-        <p>Installation instruction can be found in the <a href="https://github.com/carlosperate/ardublockly">Ardublockly repository</a>.</p>
+        <p>For all the Ardublockly features to be enabled, the Ardublockly desktop application must be running locally
+          on your computer.</p>
+        <p>If you are using an online version you will not be able to configure the settings nor load the blocks code
+          into an Arduino.</p>
+        <p>Installation instruction can be found in the <a
+            href="https://github.com/carlosperate/ardublockly">Ardublockly repository</a>.</p>
         <p>If you have Ardublockly already installed, make sure the application is running correctly.</p>
       </div>
     </div>
     <div class="modal-footer">
-      <a id="gen_alert_ok_link" href="#" class="waves-effect btn-flat modal-close"><span class="translatable_okay">Okay</span></a>
+      <a id="gen_alert_ok_link" href="#" class="waves-effect btn-flat modal-close"><span
+          class="translatable_okay">Okay</span></a>
     </div>
   </div>
 
@@ -327,7 +367,10 @@
       Ardublockly.init();
     });
   </script>
-	
+
+  <!-- for sweetAlert  -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.all.min.js"></script>
+  <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.min.css'>
   <!-- Desktop version of Ardublockly JS, needs to be loaded first. -->
   <script src="ardublockly_desktop.js"></script>
   <!-- jQuery and Materialize JS -->
@@ -346,41 +389,41 @@
   <script src="ardublockly_toolbox.js"></script>
   <script src="ardublockly_blockly.js"></script>
   <script src="ardublockly.js"></script>
-   <script src="puppet.js"></script>
+  <script src="puppet.js"></script>
 
   <script>
-   var workspace = Blockly.inject('blocklyDiv',
-             {
-                media: './media/',
-                 toolbox: document.getElementById('toolbox')
-            });
+    var workspace = Blockly.inject('blocklyDiv',
+      {
+        media: './media/',
+        toolbox: document.getElementById('toolbox')
+      });
 
-   Ardublockly.workspace=workspace;
-	
-   function runCode() {
-            // Generate JavaScript code and run it.
-            window.LoopTrap = 1000;
-            // Blockly.JavaScript.INFINITE_LOOP_TRAP =
-            //  'if (--window.LoopTrap == 0) throw "Infinite loop.";\n';
-        
-            
-			
-            var code = Blockly.JavaScript.workspaceToCode(workspace);
-			//console.log("code:"+ code);
-			
-			
-            Blockly.JavaScript.INFINITE_LOOP_TRAP = null;
-            try {
-                eval(code);
-            } catch (e) {
-                alert(e);
-            }
-			
-			//Sadece varsayılan bloklarda sorunsuz çalışıyor ve onlara ait arduino kodunu üretiyor.
-			var arduinoCode = Ardublockly.generateArduino();
-            console.log("arduino code:" + arduinoCode); 
-        }
-    </script>
+    Ardublockly.workspace = workspace;
 
+    function arduinoSourceCodeAlert() {
+      var arduinoCode = Ardublockly.generateArduino();
+      Swal.fire({
+        title: arduinoCode,
+        confirmButtonText: "Tamam",
+        width: 800,
+      });
+    }
+
+    function runCode() {
+      // Generate JavaScript code and run it.
+      window.LoopTrap = 1000;
+      // Blockly.JavaScript.INFINITE_LOOP_TRAP =
+      //  'if (--window.LoopTrap == 0) throw "Infinite loop.";\n';
+      var code = Blockly.JavaScript.workspaceToCode(workspace);
+
+      Blockly.JavaScript.INFINITE_LOOP_TRAP = null;
+      try {
+        eval(code);
+      } catch (e) {
+        alert(e);
+      }
+    }
+  </script>
 </body>
+
 </html>

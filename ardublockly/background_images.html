@@ -49,12 +49,15 @@
         }
     </style>
 
+    <!-- for sweetAlert  -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.all.min.js"></script>
+    <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.min.css'>
     <script src="puppet.js"></script>
 
     <script>
 
         var desc = new Array();
-        desc[0] = new Array("bedroom", "bedroom game....");
+        desc[0] = new Array("bedroom", "bedroom game desc....");
         desc[1] = new Array("castle", "castle game ...");
         desc[2] = new Array("colorfulcity", "colorful city game ...");
         desc[3] = new Array("farm", "farm game....");
@@ -72,8 +75,16 @@
             //oyun acıklaması icin
             for (i = 0; i < desc.length; i++) {
                 for (j = 0; j < 2; j++) {
-
-                    if (desc[i][j] == id) alert(desc[i][1]);
+                    if (desc[i][j] == id) {
+                        Swal.fire({
+                            title: desc[i][0] + " game",
+                            text: desc[i][1],
+                            type: "confirm",
+                            confirmButtonText: "Tamam"
+                        }).then(function () {
+                            window.location = "index.html";
+                        });
+                    }
                 }
             }
         }
@@ -87,63 +98,47 @@
 
     <div class="responsive">
         <div class="gallery" onclick="myfunction('bedroom');">
-            <a href="index.html">
-                <img src="images/backdrop/bedroom.png" alt="Bedroom" width="600" height="400">
-            </a>
+            <img src="images/backdrop/bedroom.png" alt="Bedroom" width="600" height="400">
         </div>
     </div>
 
     <div class="responsive">
         <div class="gallery" onclick="myfunction('castle');">
-            <a href="index.html">
-                <img src="images/backdrop/castle.png" alt="Castle" width="600" height="400">
-            </a>
+            <img src="images/backdrop/castle.png" alt="Castle" width="600" height="400">
         </div>
     </div>
 
     <div class="responsive">
         <div class="gallery" onclick="myfunction('colorfulcity');">
-            <a href="index.html">
-                <img src="images/backdrop/colorfulcity.png" alt="Colorful City" width="600" height="400">
-            </a>
+            <img src="images/backdrop/colorfulcity.png" alt="Colorful City" width="600" height="400">
         </div>
     </div>
 
     <div class="responsive">
-        <div class="gallery">
-            <a href="index.html" onclick="myfunction('farm');">
-                <img src="images/backdrop/farm.png" alt="Farm" width="600" height="400">
-            </a>
+        <div class="gallery" onclick="myfunction('farm');">
+            <img src="images/backdrop/farm.png" alt="Farm" width="600" height="400">
         </div>
     </div>
 
     <div class="responsive">
-        <div class="gallery">
-            <a href="index.html" onclick="myfunction('forest');">
-                <img src="images/backdrop/forest.png" alt="Forest" width="600" height="400">
-            </a>
+        <div class="gallery" onclick="myfunction('forest');">
+            <img src="images/backdrop/forest.png" alt="Forest" width="600" height="400">
         </div>
     </div>
 
     <div class="responsive">
-        <div class="gallery">
-            <a href="index.html" onclick="myfunction('jurassic');">
-                <img src="images/backdrop/jurassic.png" alt="Jurassic" width="600" height="400">
-            </a>
+        <div class="gallery" onclick="myfunction('jurassic');">
+            <img src="images/backdrop/jurassic.png" alt="Jurassic" width="600" height="400">
         </div>
     </div>
     <div class="responsive">
-        <div class="gallery">
-            <a href="index.html" onclick="myfunction('underwater');">
-                <img src="images/backdrop/underwater.png" alt="Underwater" width="600" height="400">
-            </a>
+        <div class="gallery" onclick="myfunction('underwater');">
+            <img src="images/backdrop/underwater.png" alt="Underwater" width="600" height="400">
         </div>
     </div>
     <div class="responsive">
-        <div class="gallery">
-            <a href="index.html" onclick="myfunction('mat-01');">
-                <img src="images/backdrop/mat-01.PNG" alt="Space" width="600" height="400">
-            </a>
+        <div class="gallery" onclick="myfunction('mat-01');">
+            <img src="images/backdrop/mat-01.PNG" alt="Space" width="600" height="400">
         </div>
     </div>
 
