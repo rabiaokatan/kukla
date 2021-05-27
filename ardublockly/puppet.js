@@ -1,10 +1,12 @@
 var myGamePiece;
 var step = 0;
 var imgObj = new Image();
-
+var canvas=document.getElementById("canvas");
+var yCoordinate= (canvas.height/2)-2*(canvas.height/8);
+var xCoordinate= (canvas.width/6)-2*(canvas.width/12);
 
 function startGame() {
-    myGamePiece = new component(60, 60, "images/pikachu.png", 20, 120, "image");
+    myGamePiece = new component(60, 60, "images/pikachu.png", xCoordinate, yCoordinate, "image");
     myGameArea.start();
 }
 
